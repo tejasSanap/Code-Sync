@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Code Syncer",
+    "version": "1.0",
+    "description": "Sync code between the browser editor and VS Code",
+    "permissions": [
+      "activeTab",  
+      "scripting"   
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://mu-factory-2.datonis.io/v3/pages/*"],
+        "js": ["contentScript.js"]
+      }
+    ],
+    "web_accessible_resources": [
+        {
+          "resources": ["injectedScript.js"],
+            "matches": ["http://*/*", "https://*/*"]
+        }
+  ],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
