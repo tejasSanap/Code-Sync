@@ -24,11 +24,16 @@ function sendCodeToVSCode() {
 
 function initializeEditorListeners() {
   const editor = window.monaco.editor.getModels()[1];
-
-  editor.onDidChangeContent(() => {
-    console.log("Editor content changed, sending code to server");
-    sendCodeToVSCode();
+  window.addEventListener('keydown', (event) => {
+    if (event.ctrlKey && event.key === 's') {
+      event.preventDefault();
+      sendCodeToVSCode();
+    }
   });
+  // editor.onDidChangeContent(() => {
+  //   console.log("Editor content changed, sending code to server");
+  //   sendCodeToVSCode();
+  // });
 }
 function checkIfMonacoReady() {
   if (
